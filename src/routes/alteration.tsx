@@ -93,6 +93,7 @@ function RouteComponent() {
                   checked={selectedOptions.includes(option)}
                   onChange={() => handleOptionChange(option)}
                 />
+                <span className={styles.checkmark}></span>
               </label>
             ))}
           </div>

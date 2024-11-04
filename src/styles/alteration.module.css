@@ -45,7 +45,7 @@
 
 .second_step {
     display: grid;
-    padding: 20px 30px 30px 30px;
+    padding: 20px 30px 0 30px;
     grid-template-columns: repeat(3, 1fr);
     gap: 15px;
 }
@@ -82,6 +82,8 @@
     border: 1px solid #d9d9d9;
     display: flex;
     flex-direction: column;
+    overflow-y: scroll;
+    height: 600px;
 }
 
 .list_item {
@@ -96,13 +98,39 @@
     border-bottom: 1px solid #d9d9d9;
 }
 
+.list_item input[type="checkbox"] {
+    display: none;
+}
 
-.list_item input {
+.list_item .checkmark {
     width: 20px;
     height: 20px;
-    border-radius: 5px;
     background-color: #FFFFFF;
     border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    display: inline-block;
+    position: relative;
+}
+
+.list_item input[type="checkbox"]:checked + .checkmark {
+    background-color: #DAC1FF;
+}
+
+.list_item .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 7px;
+    top: 3px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.list_item input[type="checkbox"]:checked + .checkmark:after {
+    display: block;
 }
 
 .label_wrapper {
