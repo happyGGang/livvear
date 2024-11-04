@@ -20,6 +20,14 @@
     align-items: center;
 }
 
+.container a:nth-child(3) img {
+    margin-left: 40px;
+}
+
+.container a:nth-child(3) p {
+    margin-left: 40px;
+}
+
 .pop_btn {
     width: 60px;
     height: 60px;
