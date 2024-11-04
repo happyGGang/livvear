@@ -11,14 +11,49 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as AboutImport } from './routes/about'
+import { Route as UsageHistoryImport } from './routes/usage-history'
+import { Route as StatusImport } from './routes/status'
+import { Route as ProfileImport } from './routes/profile'
+import { Route as NotificationsImport } from './routes/notifications'
+import { Route as MeetingsImport } from './routes/meetings'
+import { Route as AlterationImport } from './routes/alteration'
 import { Route as IndexImport } from './routes/index'
 
 // Create/Update Routes
 
-const AboutRoute = AboutImport.update({
-  id: '/about',
-  path: '/about',
+const UsageHistoryRoute = UsageHistoryImport.update({
+  id: '/usage-history',
+  path: '/usage-history',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const StatusRoute = StatusImport.update({
+  id: '/status',
+  path: '/status',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ProfileRoute = ProfileImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const NotificationsRoute = NotificationsImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const MeetingsRoute = MeetingsImport.update({
+  id: '/meetings',
+  path: '/meetings',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const AlterationRoute = AlterationImport.update({
+  id: '/alteration',
+  path: '/alteration',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -39,11 +74,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutImport
+    '/alteration': {
+      id: '/alteration'
+      path: '/alteration'
+      fullPath: '/alteration'
+      preLoaderRoute: typeof AlterationImport
+      parentRoute: typeof rootRoute
+    }
+    '/meetings': {
+      id: '/meetings'
+      path: '/meetings'
+      fullPath: '/meetings'
+      preLoaderRoute: typeof MeetingsImport
+      parentRoute: typeof rootRoute
+    }
+    '/notifications': {
+      id: '/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof NotificationsImport
+      parentRoute: typeof rootRoute
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileImport
+      parentRoute: typeof rootRoute
+    }
+    '/status': {
+      id: '/status'
+      path: '/status'
+      fullPath: '/status'
+      preLoaderRoute: typeof StatusImport
+      parentRoute: typeof rootRoute
+    }
+    '/usage-history': {
+      id: '/usage-history'
+      path: '/usage-history'
+      fullPath: '/usage-history'
+      preLoaderRoute: typeof UsageHistoryImport
       parentRoute: typeof rootRoute
     }
   }
@@ -53,37 +123,84 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
+  '/alteration': typeof AlterationRoute
+  '/meetings': typeof MeetingsRoute
+  '/notifications': typeof NotificationsRoute
+  '/profile': typeof ProfileRoute
+  '/status': typeof StatusRoute
+  '/usage-history': typeof UsageHistoryRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
+  '/alteration': typeof AlterationRoute
+  '/meetings': typeof MeetingsRoute
+  '/notifications': typeof NotificationsRoute
+  '/profile': typeof ProfileRoute
+  '/status': typeof StatusRoute
+  '/usage-history': typeof UsageHistoryRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
+  '/alteration': typeof AlterationRoute
+  '/meetings': typeof MeetingsRoute
+  '/notifications': typeof NotificationsRoute
+  '/profile': typeof ProfileRoute
+  '/status': typeof StatusRoute
+  '/usage-history': typeof UsageHistoryRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about'
+  fullPaths:
+    | '/'
+    | '/alteration'
+    | '/meetings'
+    | '/notifications'
+    | '/profile'
+    | '/status'
+    | '/usage-history'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about'
-  id: '__root__' | '/' | '/about'
+  to:
+    | '/'
+    | '/alteration'
+    | '/meetings'
+    | '/notifications'
+    | '/profile'
+    | '/status'
+    | '/usage-history'
+  id:
+    | '__root__'
+    | '/'
+    | '/alteration'
+    | '/meetings'
+    | '/notifications'
+    | '/profile'
+    | '/status'
+    | '/usage-history'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AboutRoute: typeof AboutRoute
+  AlterationRoute: typeof AlterationRoute
+  MeetingsRoute: typeof MeetingsRoute
+  NotificationsRoute: typeof NotificationsRoute
+  ProfileRoute: typeof ProfileRoute
+  StatusRoute: typeof StatusRoute
+  UsageHistoryRoute: typeof UsageHistoryRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AboutRoute: AboutRoute,
+  AlterationRoute: AlterationRoute,
+  MeetingsRoute: MeetingsRoute,
+  NotificationsRoute: NotificationsRoute,
+  ProfileRoute: ProfileRoute,
+  StatusRoute: StatusRoute,
+  UsageHistoryRoute: UsageHistoryRoute,
 }
 
 export const routeTree = rootRoute
@@ -97,14 +214,34 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/about"
+        "/alteration",
+        "/meetings",
+        "/notifications",
+        "/profile",
+        "/status",
+        "/usage-history"
       ]
     },
     "/": {
       "filePath": "index.tsx"
     },
-    "/about": {
-      "filePath": "about.tsx"
+    "/alteration": {
+      "filePath": "alteration.tsx"
+    },
+    "/meetings": {
+      "filePath": "meetings.tsx"
+    },
+    "/notifications": {
+      "filePath": "notifications.tsx"
+    },
+    "/profile": {
+      "filePath": "profile.tsx"
+    },
+    "/status": {
+      "filePath": "status.tsx"
+    },
+    "/usage-history": {
+      "filePath": "usage-history.tsx"
     }
   }
 }
