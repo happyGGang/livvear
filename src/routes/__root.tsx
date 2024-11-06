@@ -11,7 +11,6 @@ function RootComponent() {
   return (
     <>
       <Outlet />
-      <GlobalNavBar />
     </>
   );
 }

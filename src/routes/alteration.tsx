@@ -105,13 +105,13 @@ function RouteComponent() {
           다음
         </button>
       ) : (
-        <div className="mt-4 flex gap-4">
-          <button onClick={() => console.log('문의 버튼 클릭')} className="btn">
-            문의
-          </button>
-          <button onClick={handleNextClick} className="btn">
-            완료
-          </button>
+        <div className={styles.btn_wrapper}>
+          <div onClick={() => console.log('문의 버튼 클릭')} className={styles.inquiry}>
+            수선 문의
+          </div>
+          <div onClick={handleNextClick} className={styles.go_step_four}>
+            다음
+          </div>
         </div>
       )}
     </div>

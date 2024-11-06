@@ -15,7 +15,7 @@ function RouteComponent() {
 
   const handleClick = () => {
     setIsActive('user');
-    navigate({ to: '/home' });
+    navigate({ to: '/delivery-option' });
   };
 
   return (

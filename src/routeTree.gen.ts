@@ -18,6 +18,8 @@ import { Route as OnBoardingImport } from './routes/on-boarding'
 import { Route as NotificationsImport } from './routes/notifications'
 import { Route as MeetingsImport } from './routes/meetings'
 import { Route as HomeImport } from './routes/home'
+import { Route as DoneImport } from './routes/done'
+import { Route as DeliveryOptionImport } from './routes/delivery-option'
 import { Route as AlterationImport } from './routes/alteration'
 import { Route as IndexImport } from './routes/index'
 
@@ -65,6 +67,18 @@ const HomeRoute = HomeImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const DoneRoute = DoneImport.update({
+  id: '/done',
+  path: '/done',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const DeliveryOptionRoute = DeliveryOptionImport.update({
+  id: '/delivery-option',
+  path: '/delivery-option',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const AlterationRoute = AlterationImport.update({
   id: '/alteration',
   path: '/alteration',
@@ -93,6 +107,20 @@ declare module '@tanstack/react-router' {
       path: '/alteration'
       fullPath: '/alteration'
       preLoaderRoute: typeof AlterationImport
+      parentRoute: typeof rootRoute
+    }
+    '/delivery-option': {
+      id: '/delivery-option'
+      path: '/delivery-option'
+      fullPath: '/delivery-option'
+      preLoaderRoute: typeof DeliveryOptionImport
+      parentRoute: typeof rootRoute
+    }
+    '/done': {
+      id: '/done'
+      path: '/done'
+      fullPath: '/done'
+      preLoaderRoute: typeof DoneImport
       parentRoute: typeof rootRoute
     }
     '/home': {
@@ -152,6 +180,8 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/alteration': typeof AlterationRoute
+  '/delivery-option': typeof DeliveryOptionRoute
+  '/done': typeof DoneRoute
   '/home': typeof HomeRoute
   '/meetings': typeof MeetingsRoute
   '/notifications': typeof NotificationsRoute
@@ -164,6 +194,8 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/alteration': typeof AlterationRoute
+  '/delivery-option': typeof DeliveryOptionRoute
+  '/done': typeof DoneRoute
   '/home': typeof HomeRoute
   '/meetings': typeof MeetingsRoute
   '/notifications': typeof NotificationsRoute
@@ -177,6 +209,8 @@ export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/alteration': typeof AlterationRoute
+  '/delivery-option': typeof DeliveryOptionRoute
+  '/done': typeof DoneRoute
   '/home': typeof HomeRoute
   '/meetings': typeof MeetingsRoute
   '/notifications': typeof NotificationsRoute
@@ -191,6 +225,8 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/alteration'
+    | '/delivery-option'
+    | '/done'
     | '/home'
     | '/meetings'
     | '/notifications'
@@ -202,6 +238,8 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/alteration'
+    | '/delivery-option'
+    | '/done'
     | '/home'
     | '/meetings'
     | '/notifications'
@@ -213,6 +251,8 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/alteration'
+    | '/delivery-option'
+    | '/done'
     | '/home'
     | '/meetings'
     | '/notifications'
@@ -226,6 +266,8 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AlterationRoute: typeof AlterationRoute
+  DeliveryOptionRoute: typeof DeliveryOptionRoute
+  DoneRoute: typeof DoneRoute
   HomeRoute: typeof HomeRoute
   MeetingsRoute: typeof MeetingsRoute
   NotificationsRoute: typeof NotificationsRoute
@@ -238,6 +280,8 @@ export interface RootRouteChildren {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AlterationRoute: AlterationRoute,
+  DeliveryOptionRoute: DeliveryOptionRoute,
+  DoneRoute: DoneRoute,
   HomeRoute: HomeRoute,
   MeetingsRoute: MeetingsRoute,
   NotificationsRoute: NotificationsRoute,
@@ -259,6 +303,8 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/alteration",
+        "/delivery-option",
+        "/done",
         "/home",
         "/meetings",
         "/notifications",
@@ -273,6 +319,12 @@ export const routeTree = rootRoute
     },
     "/alteration": {
       "filePath": "alteration.tsx"
+    },
+    "/delivery-option": {
+      "filePath": "delivery-option.tsx"
+    },
+    "/done": {
+      "filePath": "done.tsx"
     },
     "/home": {
       "filePath": "home.tsx"

@@ -51,6 +51,9 @@
 }
 
 .next {
+    position: fixed;
+    bottom: 0;
+    margin-bottom: 20px;
     margin-top: 30px;
     margin-left: 35px;
     width: 347px;
@@ -106,7 +109,7 @@
     width: 20px;
     height: 20px;
     background-color: #FFFFFF;
-    border: 1px solid #d9d9d9;
+    border: 2px solid #d9d9d9;
     border-radius: 4px;
     display: inline-block;
     position: relative;
@@ -120,8 +123,8 @@
     content: "";
     position: absolute;
     display: none;
-    left: 7px;
-    top: 3px;
+    left: 6px;
+    top: 2px;
     width: 5px;
     height: 10px;
     border: solid white;
@@ -136,4 +139,37 @@
 .label_wrapper {
     display: flex;
     gap: 10px;
+}
+
+.btn_wrapper {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    padding: 0 20px;
+}
+
+.inquiry {
+    width: 50%;
+    background-color: #000000;
+    padding: 20px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    font-weight: 700;
+    color: #FFFFFF;
+}
+
+.go_step_four {
+    width: 50%;
+    background-color: #DAC1FF;
+    padding: 20px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    font-weight: 700;
+    color: #FFFFFF;
 }
