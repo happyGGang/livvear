@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createFileRoute } from '@tanstack/react-router';
+import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import PageHeader from '../components/page_header';
 import styles from '../styles/alteration.module.css';
 import { categories } from '../constants/alteration.constants';
@@ -14,9 +14,10 @@ function RouteComponent() {
   const [selectedCategory, setSelectedCategory] = React.useState<string | null>(null);
   const [selectedSubcategory, setSelectedSubcategory] = React.useState<string | null>(null);
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
+  const navigate = useNavigate();
 
   const handleBackButtonClick = () => {
-    console.log('뒤로가기 버튼 클릭');
+    navigate({ to: '/home' });
   };
 
   const handleCategoryClick = (category: string) => {
