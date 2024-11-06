@@ -1,0 +1,47 @@
+.container {
+  width: 100%;
+  height: 100vh;
+  background: #FFFFFF;
+  padding: 20px;
+}
+
+.description {
+  font-size: 20px;
+  color: black;
+}
+
+.title {
+  margin-top: 100px;
+  font-size: 36px;
+  font-weight: 700;
+  color: black;
+}
+
+.caption {
+  font-size: 20px;
+  color: #A59696;
+}
+
+.btn_wrapper {
+  margin-top: 30px;
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  flex-direction: column;
+  border-radius: 15px;
+  width: 180px;
+  height: 287px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-weight: 700;
+  font-size: 20px;
+  color: #000000;
+}
+
+.active {
+  background: #DAC1FF;
+}

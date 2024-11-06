@@ -14,8 +14,10 @@ import { Route as rootRoute } from './routes/__root'
 import { Route as UsageHistoryImport } from './routes/usage-history'
 import { Route as StatusImport } from './routes/status'
 import { Route as ProfileImport } from './routes/profile'
+import { Route as OnBoardingImport } from './routes/on-boarding'
 import { Route as NotificationsImport } from './routes/notifications'
 import { Route as MeetingsImport } from './routes/meetings'
+import { Route as HomeImport } from './routes/home'
 import { Route as AlterationImport } from './routes/alteration'
 import { Route as IndexImport } from './routes/index'
 
@@ -39,6 +41,12 @@ const ProfileRoute = ProfileImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const OnBoardingRoute = OnBoardingImport.update({
+  id: '/on-boarding',
+  path: '/on-boarding',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const NotificationsRoute = NotificationsImport.update({
   id: '/notifications',
   path: '/notifications',
@@ -48,6 +56,12 @@ const NotificationsRoute = NotificationsImport.update({
 const MeetingsRoute = MeetingsImport.update({
   id: '/meetings',
   path: '/meetings',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const HomeRoute = HomeImport.update({
+  id: '/home',
+  path: '/home',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -81,6 +95,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AlterationImport
       parentRoute: typeof rootRoute
     }
+    '/home': {
+      id: '/home'
+      path: '/home'
+      fullPath: '/home'
+      preLoaderRoute: typeof HomeImport
+      parentRoute: typeof rootRoute
+    }
     '/meetings': {
       id: '/meetings'
       path: '/meetings'
@@ -93,6 +114,13 @@ declare module '@tanstack/react-router' {
       path: '/notifications'
       fullPath: '/notifications'
       preLoaderRoute: typeof NotificationsImport
+      parentRoute: typeof rootRoute
+    }
+    '/on-boarding': {
+      id: '/on-boarding'
+      path: '/on-boarding'
+      fullPath: '/on-boarding'
+      preLoaderRoute: typeof OnBoardingImport
       parentRoute: typeof rootRoute
     }
     '/profile': {
@@ -124,8 +152,10 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/alteration': typeof AlterationRoute
+  '/home': typeof HomeRoute
   '/meetings': typeof MeetingsRoute
   '/notifications': typeof NotificationsRoute
+  '/on-boarding': typeof OnBoardingRoute
   '/profile': typeof ProfileRoute
   '/status': typeof StatusRoute
   '/usage-history': typeof UsageHistoryRoute
@@ -134,8 +164,10 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/alteration': typeof AlterationRoute
+  '/home': typeof HomeRoute
   '/meetings': typeof MeetingsRoute
   '/notifications': typeof NotificationsRoute
+  '/on-boarding': typeof OnBoardingRoute
   '/profile': typeof ProfileRoute
   '/status': typeof StatusRoute
   '/usage-history': typeof UsageHistoryRoute
@@ -145,8 +177,10 @@ export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/alteration': typeof AlterationRoute
+  '/home': typeof HomeRoute
   '/meetings': typeof MeetingsRoute
   '/notifications': typeof NotificationsRoute
+  '/on-boarding': typeof OnBoardingRoute
   '/profile': typeof ProfileRoute
   '/status': typeof StatusRoute
   '/usage-history': typeof UsageHistoryRoute
@@ -157,8 +191,10 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/alteration'
+    | '/home'
     | '/meetings'
     | '/notifications'
+    | '/on-boarding'
     | '/profile'
     | '/status'
     | '/usage-history'
@@ -166,8 +202,10 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/alteration'
+    | '/home'
     | '/meetings'
     | '/notifications'
+    | '/on-boarding'
     | '/profile'
     | '/status'
     | '/usage-history'
@@ -175,8 +213,10 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/alteration'
+    | '/home'
     | '/meetings'
     | '/notifications'
+    | '/on-boarding'
     | '/profile'
     | '/status'
     | '/usage-history'
@@ -186,8 +226,10 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AlterationRoute: typeof AlterationRoute
+  HomeRoute: typeof HomeRoute
   MeetingsRoute: typeof MeetingsRoute
   NotificationsRoute: typeof NotificationsRoute
+  OnBoardingRoute: typeof OnBoardingRoute
   ProfileRoute: typeof ProfileRoute
   StatusRoute: typeof StatusRoute
   UsageHistoryRoute: typeof UsageHistoryRoute
@@ -196,8 +238,10 @@ export interface RootRouteChildren {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AlterationRoute: AlterationRoute,
+  HomeRoute: HomeRoute,
   MeetingsRoute: MeetingsRoute,
   NotificationsRoute: NotificationsRoute,
+  OnBoardingRoute: OnBoardingRoute,
   ProfileRoute: ProfileRoute,
   StatusRoute: StatusRoute,
   UsageHistoryRoute: UsageHistoryRoute,
@@ -215,8 +259,10 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/alteration",
+        "/home",
         "/meetings",
         "/notifications",
+        "/on-boarding",
         "/profile",
         "/status",
         "/usage-history"
@@ -228,11 +274,17 @@ export const routeTree = rootRoute
     "/alteration": {
       "filePath": "alteration.tsx"
     },
+    "/home": {
+      "filePath": "home.tsx"
+    },
     "/meetings": {
       "filePath": "meetings.tsx"
     },
     "/notifications": {
       "filePath": "notifications.tsx"
+    },
+    "/on-boarding": {
+      "filePath": "on-boarding.tsx"
     },
     "/profile": {
       "filePath": "profile.tsx"
