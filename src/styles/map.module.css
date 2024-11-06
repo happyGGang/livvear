@@ -1,0 +1,38 @@
+.container {
+  width: 100%;
+  height: 100vh;
+  background-color: #FFFFFF;
+  position: relative;
+}
+
+.container input {
+  position: absolute;
+  top: 60px;
+  left: 25px;
+  width: 354px;
+  border-radius: 30px;
+  background-color: #FFFFFF;
+  padding: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  color: black;
+  font-size: 15px;
+}
+
+.search {
+  position: absolute;
+  top: 68px;
+  right: 55px;
+}
+
+.list {
+  background-color: #FFFFFF;
+  color: black;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 20px;
+  position: absolute;
+  bottom: 140px;
+  left: 157px;
+  padding: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}

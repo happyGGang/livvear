@@ -17,9 +17,12 @@ import { Route as ProfileImport } from './routes/profile'
 import { Route as OnBoardingImport } from './routes/on-boarding'
 import { Route as NotificationsImport } from './routes/notifications'
 import { Route as MeetingsImport } from './routes/meetings'
+import { Route as MapImport } from './routes/map'
+import { Route as ListImport } from './routes/list'
 import { Route as HomeImport } from './routes/home'
 import { Route as DoneImport } from './routes/done'
 import { Route as DeliveryOptionImport } from './routes/delivery-option'
+import { Route as ApplyImport } from './routes/apply'
 import { Route as AlterationImport } from './routes/alteration'
 import { Route as IndexImport } from './routes/index'
 
@@ -61,6 +64,18 @@ const MeetingsRoute = MeetingsImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const MapRoute = MapImport.update({
+  id: '/map',
+  path: '/map',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ListRoute = ListImport.update({
+  id: '/list',
+  path: '/list',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const HomeRoute = HomeImport.update({
   id: '/home',
   path: '/home',
@@ -76,6 +91,12 @@ const DoneRoute = DoneImport.update({
 const DeliveryOptionRoute = DeliveryOptionImport.update({
   id: '/delivery-option',
   path: '/delivery-option',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ApplyRoute = ApplyImport.update({
+  id: '/apply',
+  path: '/apply',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -109,6 +130,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AlterationImport
       parentRoute: typeof rootRoute
     }
+    '/apply': {
+      id: '/apply'
+      path: '/apply'
+      fullPath: '/apply'
+      preLoaderRoute: typeof ApplyImport
+      parentRoute: typeof rootRoute
+    }
     '/delivery-option': {
       id: '/delivery-option'
       path: '/delivery-option'
@@ -128,6 +156,20 @@ declare module '@tanstack/react-router' {
       path: '/home'
       fullPath: '/home'
       preLoaderRoute: typeof HomeImport
+      parentRoute: typeof rootRoute
+    }
+    '/list': {
+      id: '/list'
+      path: '/list'
+      fullPath: '/list'
+      preLoaderRoute: typeof ListImport
+      parentRoute: typeof rootRoute
+    }
+    '/map': {
+      id: '/map'
+      path: '/map'
+      fullPath: '/map'
+      preLoaderRoute: typeof MapImport
       parentRoute: typeof rootRoute
     }
     '/meetings': {
@@ -180,9 +222,12 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/alteration': typeof AlterationRoute
+  '/apply': typeof ApplyRoute
   '/delivery-option': typeof DeliveryOptionRoute
   '/done': typeof DoneRoute
   '/home': typeof HomeRoute
+  '/list': typeof ListRoute
+  '/map': typeof MapRoute
   '/meetings': typeof MeetingsRoute
   '/notifications': typeof NotificationsRoute
   '/on-boarding': typeof OnBoardingRoute
@@ -194,9 +239,12 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/alteration': typeof AlterationRoute
+  '/apply': typeof ApplyRoute
   '/delivery-option': typeof DeliveryOptionRoute
   '/done': typeof DoneRoute
   '/home': typeof HomeRoute
+  '/list': typeof ListRoute
+  '/map': typeof MapRoute
   '/meetings': typeof MeetingsRoute
   '/notifications': typeof NotificationsRoute
   '/on-boarding': typeof OnBoardingRoute
@@ -209,9 +257,12 @@ export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/alteration': typeof AlterationRoute
+  '/apply': typeof ApplyRoute
   '/delivery-option': typeof DeliveryOptionRoute
   '/done': typeof DoneRoute
   '/home': typeof HomeRoute
+  '/list': typeof ListRoute
+  '/map': typeof MapRoute
   '/meetings': typeof MeetingsRoute
   '/notifications': typeof NotificationsRoute
   '/on-boarding': typeof OnBoardingRoute
@@ -225,9 +276,12 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/alteration'
+    | '/apply'
     | '/delivery-option'
     | '/done'
     | '/home'
+    | '/list'
+    | '/map'
     | '/meetings'
     | '/notifications'
     | '/on-boarding'
@@ -238,9 +292,12 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/alteration'
+    | '/apply'
     | '/delivery-option'
     | '/done'
     | '/home'
+    | '/list'
+    | '/map'
     | '/meetings'
     | '/notifications'
     | '/on-boarding'
@@ -251,9 +308,12 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/alteration'
+    | '/apply'
     | '/delivery-option'
     | '/done'
     | '/home'
+    | '/list'
+    | '/map'
     | '/meetings'
     | '/notifications'
     | '/on-boarding'
@@ -266,9 +326,12 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AlterationRoute: typeof AlterationRoute
+  ApplyRoute: typeof ApplyRoute
   DeliveryOptionRoute: typeof DeliveryOptionRoute
   DoneRoute: typeof DoneRoute
   HomeRoute: typeof HomeRoute
+  ListRoute: typeof ListRoute
+  MapRoute: typeof MapRoute
   MeetingsRoute: typeof MeetingsRoute
   NotificationsRoute: typeof NotificationsRoute
   OnBoardingRoute: typeof OnBoardingRoute
@@ -280,9 +343,12 @@ export interface RootRouteChildren {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AlterationRoute: AlterationRoute,
+  ApplyRoute: ApplyRoute,
   DeliveryOptionRoute: DeliveryOptionRoute,
   DoneRoute: DoneRoute,
   HomeRoute: HomeRoute,
+  ListRoute: ListRoute,
+  MapRoute: MapRoute,
   MeetingsRoute: MeetingsRoute,
   NotificationsRoute: NotificationsRoute,
   OnBoardingRoute: OnBoardingRoute,
@@ -303,9 +369,12 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/alteration",
+        "/apply",
         "/delivery-option",
         "/done",
         "/home",
+        "/list",
+        "/map",
         "/meetings",
         "/notifications",
         "/on-boarding",
@@ -320,6 +389,9 @@ export const routeTree = rootRoute
     "/alteration": {
       "filePath": "alteration.tsx"
     },
+    "/apply": {
+      "filePath": "apply.tsx"
+    },
     "/delivery-option": {
       "filePath": "delivery-option.tsx"
     },
@@ -328,6 +400,12 @@ export const routeTree = rootRoute
     },
     "/home": {
       "filePath": "home.tsx"
+    },
+    "/list": {
+      "filePath": "list.tsx"
+    },
+    "/map": {
+      "filePath": "map.tsx"
     },
     "/meetings": {
       "filePath": "meetings.tsx"
