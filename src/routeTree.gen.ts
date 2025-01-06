@@ -13,6 +13,7 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as UsageHistoryImport } from './routes/usage-history'
 import { Route as StatusImport } from './routes/status'
+import { Route as SignupImport } from './routes/signup'
 import { Route as ProfileImport } from './routes/profile'
 import { Route as OnBoardingImport } from './routes/on-boarding'
 import { Route as NotificationsImport } from './routes/notifications'
@@ -38,6 +39,12 @@ const UsageHistoryRoute = UsageHistoryImport.update({
 const StatusRoute = StatusImport.update({
   id: '/status',
   path: '/status',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const SignupRoute = SignupImport.update({
+  id: '/signup',
+  path: '/signup',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -214,6 +221,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProfileImport
       parentRoute: typeof rootRoute
     }
+    '/signup': {
+      id: '/signup'
+      path: '/signup'
+      fullPath: '/signup'
+      preLoaderRoute: typeof SignupImport
+      parentRoute: typeof rootRoute
+    }
     '/status': {
       id: '/status'
       path: '/status'
@@ -247,6 +261,7 @@ export interface FileRoutesByFullPath {
   '/notifications': typeof NotificationsRoute
   '/on-boarding': typeof OnBoardingRoute
   '/profile': typeof ProfileRoute
+  '/signup': typeof SignupRoute
   '/status': typeof StatusRoute
   '/usage-history': typeof UsageHistoryRoute
 }
@@ -265,6 +280,7 @@ export interface FileRoutesByTo {
   '/notifications': typeof NotificationsRoute
   '/on-boarding': typeof OnBoardingRoute
   '/profile': typeof ProfileRoute
+  '/signup': typeof SignupRoute
   '/status': typeof StatusRoute
   '/usage-history': typeof UsageHistoryRoute
 }
@@ -284,6 +300,7 @@ export interface FileRoutesById {
   '/notifications': typeof NotificationsRoute
   '/on-boarding': typeof OnBoardingRoute
   '/profile': typeof ProfileRoute
+  '/signup': typeof SignupRoute
   '/status': typeof StatusRoute
   '/usage-history': typeof UsageHistoryRoute
 }
@@ -304,6 +321,7 @@ export interface FileRouteTypes {
     | '/notifications'
     | '/on-boarding'
     | '/profile'
+    | '/signup'
     | '/status'
     | '/usage-history'
   fileRoutesByTo: FileRoutesByTo
@@ -321,6 +339,7 @@ export interface FileRouteTypes {
     | '/notifications'
     | '/on-boarding'
     | '/profile'
+    | '/signup'
     | '/status'
     | '/usage-history'
   id:
@@ -338,6 +357,7 @@ export interface FileRouteTypes {
     | '/notifications'
     | '/on-boarding'
     | '/profile'
+    | '/signup'
     | '/status'
     | '/usage-history'
   fileRoutesById: FileRoutesById
@@ -357,6 +377,7 @@ export interface RootRouteChildren {
   NotificationsRoute: typeof NotificationsRoute
   OnBoardingRoute: typeof OnBoardingRoute
   ProfileRoute: typeof ProfileRoute
+  SignupRoute: typeof SignupRoute
   StatusRoute: typeof StatusRoute
   UsageHistoryRoute: typeof UsageHistoryRoute
 }
@@ -375,6 +396,7 @@ const rootRouteChildren: RootRouteChildren = {
   NotificationsRoute: NotificationsRoute,
   OnBoardingRoute: OnBoardingRoute,
   ProfileRoute: ProfileRoute,
+  SignupRoute: SignupRoute,
   StatusRoute: StatusRoute,
   UsageHistoryRoute: UsageHistoryRoute,
 }
@@ -402,6 +424,7 @@ export const routeTree = rootRoute
         "/notifications",
         "/on-boarding",
         "/profile",
+        "/signup",
         "/status",
         "/usage-history"
       ]
@@ -444,6 +467,9 @@ export const routeTree = rootRoute
     },
     "/profile": {
       "filePath": "profile.tsx"
+    },
+    "/signup": {
+      "filePath": "signup.tsx"
     },
     "/status": {
       "filePath": "status.tsx"

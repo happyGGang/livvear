@@ -32,6 +32,10 @@ function RouteComponent() {
     navigate({ to: "/on-boarding" });
   };
 
+  const handleSignUp = () => {
+    navigate({ to: "/signup" });
+  }
+
   return (
     <div className={styles.container}>
       <img src={logo} alt="" />
@@ -49,7 +53,7 @@ function RouteComponent() {
         onChange={(e) => setPassword(e.target.value)}
       />
       {error && <div className={styles.error}>{error}</div>}
-      <div className={styles.join}>회원가입 하기</div>
+      <div className={styles.join} onClick={handleSignUp}>회원가입 하기</div>
       <div className={styles.login} onClick={handleDone}>
         로그인
       </div>

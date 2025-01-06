@@ -1,0 +1,79 @@
+.container {
+  background-color: #FFFFFF;
+  width: 100%;
+  height: 100vh;
+}
+
+.content {
+  margin: 16px;
+  border: 1px solid #707070;
+  height: 60vh;
+  overflow-y: auto;
+  border-radius: 5px;
+  padding: 16px;
+}
+
+.content .input {
+  color: black;
+  width: 100%;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #FFFFFF;
+  border: 1px  solid #A775F4;
+  margin-bottom: 20px;
+}
+
+.content .input::placeholder  {
+  color: #A775F4;
+}
+
+.content .input:focus {
+  outline: none;
+}
+
+.submit {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  background-color: #A775F4;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 16px;
+}
+
+.label {
+  color: black;
+  margin-bottom: 5px;
+}
+
+.checkbox {
+  display: flex;
+}
+
+label {
+  color: black;
+  margin-left: 10px;
+  font-size: 16px;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.checkbox input {
+  width: 24px;
+  height: 24px;
+  background: #FFFFFF;
+  border: 1px solid #A775F4;
+}
+
+.error {
+  text-align: center;
+  color: red;
+  font-size: 14px;
+  margin-top: 30px;
+}
