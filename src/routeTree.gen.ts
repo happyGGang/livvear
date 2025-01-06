@@ -24,6 +24,7 @@ import { Route as ListImport } from './routes/list'
 import { Route as HomeImport } from './routes/home'
 import { Route as DoneImport } from './routes/done'
 import { Route as DeliveryOptionImport } from './routes/delivery-option'
+import { Route as CreateReviewImport } from './routes/create-review'
 import { Route as ApplyImport } from './routes/apply'
 import { Route as AlterationImport } from './routes/alteration'
 import { Route as IndexImport } from './routes/index'
@@ -108,6 +109,12 @@ const DeliveryOptionRoute = DeliveryOptionImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const CreateReviewRoute = CreateReviewImport.update({
+  id: '/create-review',
+  path: '/create-review',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const ApplyRoute = ApplyImport.update({
   id: '/apply',
   path: '/apply',
@@ -149,6 +156,13 @@ declare module '@tanstack/react-router' {
       path: '/apply'
       fullPath: '/apply'
       preLoaderRoute: typeof ApplyImport
+      parentRoute: typeof rootRoute
+    }
+    '/create-review': {
+      id: '/create-review'
+      path: '/create-review'
+      fullPath: '/create-review'
+      preLoaderRoute: typeof CreateReviewImport
       parentRoute: typeof rootRoute
     }
     '/delivery-option': {
@@ -251,6 +265,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/alteration': typeof AlterationRoute
   '/apply': typeof ApplyRoute
+  '/create-review': typeof CreateReviewRoute
   '/delivery-option': typeof DeliveryOptionRoute
   '/done': typeof DoneRoute
   '/home': typeof HomeRoute
@@ -270,6 +285,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/alteration': typeof AlterationRoute
   '/apply': typeof ApplyRoute
+  '/create-review': typeof CreateReviewRoute
   '/delivery-option': typeof DeliveryOptionRoute
   '/done': typeof DoneRoute
   '/home': typeof HomeRoute
@@ -290,6 +306,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/alteration': typeof AlterationRoute
   '/apply': typeof ApplyRoute
+  '/create-review': typeof CreateReviewRoute
   '/delivery-option': typeof DeliveryOptionRoute
   '/done': typeof DoneRoute
   '/home': typeof HomeRoute
@@ -311,6 +328,7 @@ export interface FileRouteTypes {
     | '/'
     | '/alteration'
     | '/apply'
+    | '/create-review'
     | '/delivery-option'
     | '/done'
     | '/home'
@@ -329,6 +347,7 @@ export interface FileRouteTypes {
     | '/'
     | '/alteration'
     | '/apply'
+    | '/create-review'
     | '/delivery-option'
     | '/done'
     | '/home'
@@ -347,6 +366,7 @@ export interface FileRouteTypes {
     | '/'
     | '/alteration'
     | '/apply'
+    | '/create-review'
     | '/delivery-option'
     | '/done'
     | '/home'
@@ -367,6 +387,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AlterationRoute: typeof AlterationRoute
   ApplyRoute: typeof ApplyRoute
+  CreateReviewRoute: typeof CreateReviewRoute
   DeliveryOptionRoute: typeof DeliveryOptionRoute
   DoneRoute: typeof DoneRoute
   HomeRoute: typeof HomeRoute
@@ -386,6 +407,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AlterationRoute: AlterationRoute,
   ApplyRoute: ApplyRoute,
+  CreateReviewRoute: CreateReviewRoute,
   DeliveryOptionRoute: DeliveryOptionRoute,
   DoneRoute: DoneRoute,
   HomeRoute: HomeRoute,
@@ -414,6 +436,7 @@ export const routeTree = rootRoute
         "/",
         "/alteration",
         "/apply",
+        "/create-review",
         "/delivery-option",
         "/done",
         "/home",
@@ -437,6 +460,9 @@ export const routeTree = rootRoute
     },
     "/apply": {
       "filePath": "apply.tsx"
+    },
+    "/create-review": {
+      "filePath": "create-review.tsx"
     },
     "/delivery-option": {
       "filePath": "delivery-option.tsx"

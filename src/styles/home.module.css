@@ -133,3 +133,17 @@
   font-size: 20px;
   font-weight: 700;
 }
+
+.submit {
+  width: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  background-color: #A775F4;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 16px;
+  font-weight: 700;
+}

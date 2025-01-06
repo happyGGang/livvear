@@ -21,6 +21,10 @@ function RouteComponent() {
     navigate({ to: '/alteration' });
   };
 
+  const handleNavigation = () => {
+    navigate({ to: "/create-review" });
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.title}>LIVVEAR</div>
@@ -77,6 +81,9 @@ function RouteComponent() {
           </span>
         </div>
         <img src={girl} alt="" />
+      </div>
+      <div className={styles.submit} onClick={handleNavigation}>
+        리뷰쓰기
       </div>
       <GlobalNavBar />
     </div>
