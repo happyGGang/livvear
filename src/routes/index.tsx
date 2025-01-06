@@ -10,7 +10,7 @@ function HomeComponent() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    navigate({ to: '/on-boarding' });
+    navigate({ to: '/login' });
   }, []);
 
 

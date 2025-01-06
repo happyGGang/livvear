@@ -18,6 +18,7 @@ import { Route as OnBoardingImport } from './routes/on-boarding'
 import { Route as NotificationsImport } from './routes/notifications'
 import { Route as MeetingsImport } from './routes/meetings'
 import { Route as MapImport } from './routes/map'
+import { Route as LoginImport } from './routes/login'
 import { Route as ListImport } from './routes/list'
 import { Route as HomeImport } from './routes/home'
 import { Route as DoneImport } from './routes/done'
@@ -67,6 +68,12 @@ const MeetingsRoute = MeetingsImport.update({
 const MapRoute = MapImport.update({
   id: '/map',
   path: '/map',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const LoginRoute = LoginImport.update({
+  id: '/login',
+  path: '/login',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -165,6 +172,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ListImport
       parentRoute: typeof rootRoute
     }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginImport
+      parentRoute: typeof rootRoute
+    }
     '/map': {
       id: '/map'
       path: '/map'
@@ -227,6 +241,7 @@ export interface FileRoutesByFullPath {
   '/done': typeof DoneRoute
   '/home': typeof HomeRoute
   '/list': typeof ListRoute
+  '/login': typeof LoginRoute
   '/map': typeof MapRoute
   '/meetings': typeof MeetingsRoute
   '/notifications': typeof NotificationsRoute
@@ -244,6 +259,7 @@ export interface FileRoutesByTo {
   '/done': typeof DoneRoute
   '/home': typeof HomeRoute
   '/list': typeof ListRoute
+  '/login': typeof LoginRoute
   '/map': typeof MapRoute
   '/meetings': typeof MeetingsRoute
   '/notifications': typeof NotificationsRoute
@@ -262,6 +278,7 @@ export interface FileRoutesById {
   '/done': typeof DoneRoute
   '/home': typeof HomeRoute
   '/list': typeof ListRoute
+  '/login': typeof LoginRoute
   '/map': typeof MapRoute
   '/meetings': typeof MeetingsRoute
   '/notifications': typeof NotificationsRoute
@@ -281,6 +298,7 @@ export interface FileRouteTypes {
     | '/done'
     | '/home'
     | '/list'
+    | '/login'
     | '/map'
     | '/meetings'
     | '/notifications'
@@ -297,6 +315,7 @@ export interface FileRouteTypes {
     | '/done'
     | '/home'
     | '/list'
+    | '/login'
     | '/map'
     | '/meetings'
     | '/notifications'
@@ -313,6 +332,7 @@ export interface FileRouteTypes {
     | '/done'
     | '/home'
     | '/list'
+    | '/login'
     | '/map'
     | '/meetings'
     | '/notifications'
@@ -331,6 +351,7 @@ export interface RootRouteChildren {
   DoneRoute: typeof DoneRoute
   HomeRoute: typeof HomeRoute
   ListRoute: typeof ListRoute
+  LoginRoute: typeof LoginRoute
   MapRoute: typeof MapRoute
   MeetingsRoute: typeof MeetingsRoute
   NotificationsRoute: typeof NotificationsRoute
@@ -348,6 +369,7 @@ const rootRouteChildren: RootRouteChildren = {
   DoneRoute: DoneRoute,
   HomeRoute: HomeRoute,
   ListRoute: ListRoute,
+  LoginRoute: LoginRoute,
   MapRoute: MapRoute,
   MeetingsRoute: MeetingsRoute,
   NotificationsRoute: NotificationsRoute,
@@ -374,6 +396,7 @@ export const routeTree = rootRoute
         "/done",
         "/home",
         "/list",
+        "/login",
         "/map",
         "/meetings",
         "/notifications",
@@ -403,6 +426,9 @@ export const routeTree = rootRoute
     },
     "/list": {
       "filePath": "list.tsx"
+    },
+    "/login": {
+      "filePath": "login.tsx"
     },
     "/map": {
       "filePath": "map.tsx"
