@@ -1,29 +1,58 @@
-import * as React from 'react'
-import { createFileRoute, useNavigate } from '@tanstack/react-router';
-import styles from '../styles/login.module.css';
-import { useState } from 'react';
-import logo from '../assets/img/logo.svg'
+import * as React from "react";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import styles from "../styles/login.module.css";
+import { useState } from "react";
+import logo from "../assets/img/logo.svg";
 
-export const Route = createFileRoute('/login')({
+export const Route = createFileRoute("/login")({
   component: RouteComponent,
-})
+});
 
 function RouteComponent() {
   const navigate = useNavigate();
-  const [id, setId] = useState('')
-  const [password, setPassword] = useState('')
+  const [id, setId] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleDone = () => {
-    navigate({ to: '/on-boarding' });
+    if (!id.trim()) {
+      setError("아이디를 입력해주세요.");
+      return;
+    }
+    if (!password.trim()) {
+      setError("비밀번호를 입력해주세요.");
+      return;
+    }
+    if (password.length < 6) {
+      setError("비밀번호는 최소 6자 이상이어야 합니다.");
+      return;
+    }
+
+    setError("");
+    navigate({ to: "/on-boarding" });
   };
 
   return (
     <div className={styles.container}>
       <img src={logo} alt="" />
-      <input type="text" placeholder={'아이디를 입력해주세요'} style={{ marginBottom: '5px' }} />
-      <input type="password" placeholder={'비밀번호를 입력해주세요'} />
+      <input
+        type="text"
+        placeholder="아이디를 입력해주세요"
+        style={{ marginBottom: "5px" }}
+        value={id}
+        onChange={(e) => setId(e.target.value)}
+      />
+      <input
+        type="password"
+        placeholder="비밀번호를 입력해주세요"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      {error && <div className={styles.error}>{error}</div>}
       <div className={styles.join}>회원가입 하기</div>
-      <div className={styles.login} onClick={handleDone}>로그인</div>
+      <div className={styles.login} onClick={handleDone}>
+        로그인
+      </div>
     </div>
-  )
+  );
 }
